@@ -1,68 +1,61 @@
 package GraphDataSystem;
 import java.awt.BorderLayout;
 import java.awt.event.*;
-import javax.swing.*;
+import java.util.Set;
 
+import javax.swing.*;
+import java.util.Set;
 public class Djikstra extends JPanel implements ActionListener{
 	Graph graph;
 	int startingPoint;
 	int endingPoint;
 	int arraySize;
 	
-	int[] vertices; 
-	int[][] edges;
-	int[] dist;
-	boolean[] visited;
+	int[] shortestDFromStart;
+	Vertex[] previousVertex;
 	
 	JButton button = new JButton("Djikstra");
 	JTextField fromTF = new JTextField();
 	JTextField toTF = new JTextField();
+	
+	public void delveDeeper(Vertex start, boolean[] visited) {// this looks fishy. what when there is no vertex
+		Vertex element1 = start;
+		boolean[] localVisited = new boolean[arraySize];
+		localVisited = visited;
+		localVisited[start.index] = true;
+		int i =0;
+		
+		
+		for(Edge element2: element1.edges) {
+
+			//1 check if edge doesnt goes to a visited zone
+			
+			//2 order the valid outs from least costly to most
+			
+			//3 call itself again for each of them
+			
+			//local array to keep track of vertices a path has been in?
+			//sacrifices?
+		}
+	}
 	
 	private void djikstraAlgorythm() {
 		//read from text fields if they worked
 		startingPoint = 1;
 		endingPoint = 15;
 		
-		dist[startingPoint] = 0;
-		delveDeeper(startingPoint);
-		for (int i=0; i<arraySize; i++) {
-			System.out.print(i + "("+ dist[i] + ") ");
-		}
+		shortestDFromStart[startingPoint] = 0;
+		//delveDeeper(graph.getVertex(startingPoint));
 	}
-	public void delveDeeper(int start) {// this looks fishy. what when there is no vertex
-		visited[start] = true;
-		for (int i=0; i<arraySize; i++) {
-			if(dist[i]>edges[start][i]) {
-				dist[i] = edges[start][i]; // very wrong
-			}
-			if(visited[i]!=true) { //if i is not on the already visited list
-				delveDeeper(i);
-			}
-		}
-	}
-	
-	
 	
 	public Djikstra(Graph graph){
 		this.graph = graph;
 		arraySize = graph.vertices.size();
-		vertices = new int[arraySize];
-		edges = new int[arraySize][arraySize];
-		dist = new int[arraySize];
-		visited = new boolean[arraySize];
+		shortestDFromStart = new int[arraySize];
+		previousVertex = new Vertex[arraySize];
 		
 		for (int i=0; i<arraySize; i++) {
-			vertices[i] = 0;
-			dist[i] = 9999;
-			for (int j=0; j<arraySize; j++) {
-				edges[i][j] = 9999;
-			}
-			visited[i]=false;
-		}
-		for (Vertex element1 : graph.vertices) {
-			for (Edge element2 : element1.edges) {
-				edges[element1.index-1][element2.to.index-1] = element2.weight;
-			}
+			shortestDFromStart[i] = 99999999;
 		}
 		
 		
