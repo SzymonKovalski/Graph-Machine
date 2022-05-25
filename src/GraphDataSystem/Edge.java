@@ -1,6 +1,8 @@
 package GraphDataSystem;
 
-public class Edge {
+import java.util.Comparator;
+
+public class Edge implements Comparator<Edge>{
 	public Vertex to; 
     public int weight;
 
@@ -8,5 +10,8 @@ public class Edge {
         this.to = to;
         this.weight = weight;
     }
-
+    
+    public int compare(Edge e1, Edge e2){
+    	 return e1.weight - e2.weight;
+    }
 }

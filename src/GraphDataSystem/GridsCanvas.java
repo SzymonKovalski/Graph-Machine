@@ -32,15 +32,15 @@ public class GridsCanvas extends JPanel{
 	private void drawEdges(Graphics g, int rowHt, int rowWid) {
 		for (Vertex element1 :graph.vertices){
 			int index1 = element1.index;
-			int x1 = (index1-1)%cols; //which column
-			int y1 = (index1-1)/cols; //which row
+			int x1 = (index1)%cols; //which column
+			int y1 = (index1)/cols; //which row
 			for (Edge element2: element1.edges) {
 				
 				g.setColor(colorSpectrum(element2));
 				
 				int index2 =  element2.to.index;
-				int x2 = (index2-1)%cols; //which column
-				int y2 = (index2-1)/cols; //which row
+				int x2 = (index2)%cols; //which column
+				int y2 = (index2)/cols; //which row
 				g.drawLine(x1*rowHt+VERTEXSIZE/2, y1*rowWid+VERTEXSIZE/2, x2*rowHt+VERTEXSIZE/2, y2*rowWid+VERTEXSIZE/2);
 			}
 		}
@@ -48,8 +48,8 @@ public class GridsCanvas extends JPanel{
 	private void drawVerteces(Graphics g, int rowHt, int rowWid) {
 		for (Vertex element1 :graph.vertices){
 			int index1 = element1.index;
-			int x1 = (index1-1)%cols; //which column
-			int y1 = (index1-1)/cols; //which row
+			int x1 = (index1)%cols; //which column
+			int y1 = (index1)/cols; //which row
 			
 			g.setColor(Color.white);
 			g.drawOval(x1*rowHt, y1*rowWid, VERTEXSIZE, VERTEXSIZE);

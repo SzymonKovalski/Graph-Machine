@@ -7,8 +7,8 @@ import javax.swing.*;
 public class Main extends JFrame{
 	final int RANDMIN = 1;
 	final int RANDMAX = 10;
-	final int HEIGHT = 10;
-	final int WIDTH = 20;
+	final int HEIGHT = 4;
+	final int WIDTH = 4;
 	
 	public Main() {
 		Graph graph = new Graph(HEIGHT, WIDTH, RANDMIN, RANDMAX);

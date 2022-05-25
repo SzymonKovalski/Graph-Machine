@@ -12,7 +12,7 @@ public class Graph {
   		  
   		  //makes vertexes
   		  for (int i = 0; i < h*w; i++) {
-  			  VertexArray[i] = new Vertex(i+1); 
+  			  VertexArray[i] = new Vertex(i); 
   		  }
 
   		  //adds Edges to neighbouring Vertexes
