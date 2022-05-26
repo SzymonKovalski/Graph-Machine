@@ -13,8 +13,8 @@ public class Djikstra extends JPanel implements ActionListener{
 	int endingPoint;
 	int arraySize;
 	
-	int[] shortestDFromStart;
-	Vertex[] previousVertex;
+	public int[] shortestDFromStart;
+	public Vertex[] previousVertex;
 	
 	JButton button = new JButton("Djikstra");
 	JTextField fromTF = new JTextField();
@@ -79,7 +79,7 @@ public class Djikstra extends JPanel implements ActionListener{
 		this.graph = graph;
 		arraySize = graph.vertices.size();
 		shortestDFromStart = new int[arraySize];
-
+		previousVertex = new Vertex[arraySize];
 		for (int i=0; i<arraySize; i++) {
 			shortestDFromStart[i] = 99999999;
 		}
