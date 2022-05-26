@@ -14,7 +14,7 @@ public class Djikstra extends JPanel implements ActionListener{
 	int arraySize;
 	
 	int[] shortestDFromStart;
-
+	Vertex[] previousVertex;
 	
 	JButton button = new JButton("Djikstra");
 	JTextField fromTF = new JTextField();
@@ -33,6 +33,7 @@ public class Djikstra extends JPanel implements ActionListener{
 			Edge element2 = element1.getEdge(i);
 			if(shortestDFromStart[element2.to.index] > element2.weight+depthWeight) { //1. log edge weight
 				shortestDFromStart[element2.to.index] = element2.weight+depthWeight;
+				previousVertex[element2.to.index] = start;
 			}
 			if(localVisited[element2.to.index]==false){ //1.1 check if edge doesnt goes to a visited zone to go further
 				k++;
@@ -78,7 +79,7 @@ public class Djikstra extends JPanel implements ActionListener{
 		this.graph = graph;
 		arraySize = graph.vertices.size();
 		shortestDFromStart = new int[arraySize];
-		
+
 		for (int i=0; i<arraySize; i++) {
 			shortestDFromStart[i] = 99999999;
 		}
