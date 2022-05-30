@@ -64,6 +64,18 @@ public class Djikstra extends JPanel implements ActionListener{
 		}
 	}
 
+	//major flaw. comparison doesnt apply path to the vertex, resulting in 7 --> 10 --> 7 ...
+	private void explainPath(Vertex start) {
+		Vertex thisVertex = previousVertex[start.index];
+		System.out.print(thisVertex.index);
+		if(thisVertex.index != startingPoint) {
+			System.out.print(" --> ");
+			explainPath(thisVertex);
+		}
+		else {
+			System.out.println();
+		}
+	}
 	
 	private void djikstraAlgorythm() {
 		//read from text fields if they worked
@@ -73,6 +85,7 @@ public class Djikstra extends JPanel implements ActionListener{
 		shortestDFromStart[startingPoint] = 0;
 		delveDeeper(graph.getVertex(startingPoint), new boolean[arraySize], 0);
 		System.out.println(shortestDFromStart[endingPoint]);
+		explainPath(graph.getVertex(endingPoint));
 	}
 	
 	public Djikstra(Graph graph){
