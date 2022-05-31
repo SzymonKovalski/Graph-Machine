@@ -22,6 +22,7 @@ public class Main extends JFrame{
 	    panel.setLayout(new BorderLayout());
 		
 	    toolbar.add(new Djikstra(graph));
+	    toolbar.add(new SaveSystem(graph));
 	    
 	    panel.add(toolbar,BorderLayout.NORTH);
 	    panel.add(gridscanvas);

@@ -29,7 +29,7 @@ public class GridsCanvas extends JPanel{
 		
 	 }
 	
-	private void drawEdges(Graphics g, int rowHt, int rowWid) {
+	private void drawEdges(Graphics g, int rowWid, int rowHt) {
 		for (Vertex element1 :graph.vertices){
 			int index1 = element1.index;
 			int x1 = (index1)%cols; //which column
@@ -45,7 +45,7 @@ public class GridsCanvas extends JPanel{
 			}
 		}
 	}
-	private void drawVerteces(Graphics g, int rowHt, int rowWid) {
+	private void drawVerteces(Graphics g, int rowWid, int rowHt) {
 		for (Vertex element1 :graph.vertices){
 			int index1 = element1.index;
 			int x1 = (index1)%cols; //which column
