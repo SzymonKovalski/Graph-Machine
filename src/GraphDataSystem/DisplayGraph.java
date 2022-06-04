@@ -1,8 +1,10 @@
 package GraphDataSystem;
+
 import java.awt.Graphics;
 import java.awt.Color;
 import javax.swing.JPanel;
-public class GridsCanvas extends JPanel{
+
+public class DisplayGraph extends JPanel{
 	int width, height;
 	final int VERTEXSIZE = 15;
 	
@@ -10,7 +12,7 @@ public class GridsCanvas extends JPanel{
 	int rows;
 	int cols;
 
-	GridsCanvas(int w, int h, int rh, int cw, Graph graph) {
+	DisplayGraph(int w, int h, int rh, int cw, Graph graph) {
 		setSize(width = w, height = h);
 	    this.graph = graph;
 	    rows = rh;
@@ -31,14 +33,14 @@ public class GridsCanvas extends JPanel{
 	
 	private void drawEdges(Graphics g, int rowWid, int rowHt) {
 		for (Vertex element1 :graph.vertices){
-			int index1 = element1.index;
+			int index1 = element1.getName();
 			int x1 = (index1)%cols; //which column
 			int y1 = (index1)/cols; //which row
 			for (Edge element2: element1.edges) {
 				
 				g.setColor(colorSpectrum(element2));
 				
-				int index2 =  element2.to.index;
+				int index2 =  element2.getTargetVertex().getName();
 				int x2 = (index2)%cols; //which column
 				int y2 = (index2)/cols; //which row
 				g.drawLine(x1*rowHt+VERTEXSIZE/2, y1*rowWid+VERTEXSIZE/2, x2*rowHt+VERTEXSIZE/2, y2*rowWid+VERTEXSIZE/2);
@@ -47,7 +49,7 @@ public class GridsCanvas extends JPanel{
 	}
 	private void drawVerteces(Graphics g, int rowWid, int rowHt) {
 		for (Vertex element1 :graph.vertices){
-			int index1 = element1.index;
+			int index1 = element1.getName();
 			int x1 = (index1)%cols; //which column
 			int y1 = (index1)/cols; //which row
 			
@@ -62,13 +64,13 @@ public class GridsCanvas extends JPanel{
 	private Color colorSpectrum(Edge e) {
 		// B A D!  B A D!  B A D!  B A D!  B A D!  B A D!  B A D!  B A D!  B A D!
 		Color C = Color.magenta;
-		if(e.weight >2)
+		if(e.getWeight() >20)
 			C = Color.blue;
-		if(e.weight >4)
+		if(e.getWeight() >40)
 			C = Color.green;
-		if(e.weight >6)
+		if(e.getWeight() >60)
 			C = Color.orange;
-		if(e.weight >8)
+		if(e.getWeight() >80)
 			C = Color.red;
 		return C;
 	}

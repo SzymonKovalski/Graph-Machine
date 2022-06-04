@@ -1,17 +1,37 @@
 package GraphDataSystem;
 
-import java.util.Comparator;
+public class Edge {
+    private double weight;
+    private Vertex startVertex;
+    private Vertex targetVertex;
 
-public class Edge implements Comparator<Edge>{
-	public Vertex to; 
-    public int weight;
+    public Edge(double weight, Vertex startVertex, Vertex targetVertex) {
+        this.weight = weight;
+        this.startVertex = startVertex;
+        this.targetVertex = targetVertex;
+    }
 
-    public Edge(Vertex to, int weight) {
-        this.to = to;
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
         this.weight = weight;
     }
-    
-    public int compare(Edge e1, Edge e2){
-    	 return e1.weight - e2.weight;
+
+    public Vertex getStartVertex() {
+        return startVertex;
+    }
+
+    public void setStartVertex(Vertex startVertex) {
+        this.startVertex = startVertex;
+    }
+
+    public Vertex getTargetVertex() {
+        return targetVertex;
+    }
+
+    public void setTargetVertex(Vertex targetVertex) {
+        this.targetVertex = targetVertex;
     }
 }
