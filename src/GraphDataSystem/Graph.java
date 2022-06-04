@@ -1,12 +1,13 @@
 package GraphDataSystem;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Graph {
-	public Set<Vertex> vertices;
+	public List<Vertex> vertices;
 	public Graph(int height, int width, int randMin, int randMax) {
-		vertices = new HashSet<>();
+		this.vertices = new ArrayList<>();
+
 		Vertex[] VertexArray = new Vertex[height*width];
 		  
 		  //makes vertexes
@@ -44,17 +45,11 @@ public class Graph {
         return vertices.add(vertex);
     }
 	Vertex getVertex(int n) {
-    	int i = 0;
-        
-        for (Vertex element :vertices) { 
-          // Implementing for loop
-  
-            if (i == n)
-            {
-                return element;
-            }
-            i++;
-        }
-        return null;
+    	for (Vertex v : vertices) {
+    		if (v.getName() == n) {
+    			return v;
+    		}
+    	}
+    	return null;
     }
 }

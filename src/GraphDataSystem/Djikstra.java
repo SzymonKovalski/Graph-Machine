@@ -65,7 +65,7 @@ public class Djikstra extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==button) {
 			this.computePath(graph.getVertex(0));
-			System.out.println(this.getShortestPathTo(graph.getVertex(3)));
+			System.out.println(this.getShortestPathTo(graph.getVertex(12)));
 		}
 	}
 }
