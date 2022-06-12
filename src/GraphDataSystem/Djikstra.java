@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Djikstra extends JPanel implements ActionListener{
-	Graph graph;
+	Graph graph = Main.graph;
 	JButton button = new JButton("Djikstra");
 	JTextField fromTF = new JTextField();
 	JTextField toTF = new JTextField();
@@ -50,8 +50,7 @@ public class Djikstra extends JPanel implements ActionListener{
         Collections.reverse(path);
         return path;
     }
-    public Djikstra(Graph graph){
-    	this.graph = graph;
+    public Djikstra(){
     	//graphics
     	fromTF.setPreferredSize(new Dimension(100, 20));
     	toTF.setPreferredSize(new Dimension(100, 20));
@@ -61,11 +60,18 @@ public class Djikstra extends JPanel implements ActionListener{
     	this.add(toTF, BorderLayout.WEST);
     	this.add(button, BorderLayout.WEST);
     }
+
     @Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==button) {
-			this.computePath(graph.getVertex(0));
-			System.out.println(this.getShortestPathTo(graph.getVertex(12)));
+			int toInt = Integer.parseInt(toTF.getText());
+			int fromInt = Integer.parseInt(fromTF.getText());
+			this.computePath(graph.getVertex(fromInt));
+			List<Vertex> results = this.getShortestPathTo(graph.getVertex(toInt));
+			System.out.println(results);
+			Main.displaygraph.updateUI(results);
+			//Main.displaygraph.pathfind(results);
 		}
 	}
+
 }

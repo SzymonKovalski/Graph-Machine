@@ -1,13 +1,18 @@
 package GraphDataSystem;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Graph {
+public class Graph implements Serializable{
 	public List<Vertex> vertices;
-	public Graph(int height, int width, int randMin, int randMax) {
+	final static int RANDMIN = 1;
+	final static int RANDMAX = 100;
+	static int height, width;
+	public Graph(int height, int width) {
 		this.vertices = new ArrayList<>();
-
+		this.height = height;
+		this.width = width;
 		Vertex[] VertexArray = new Vertex[height*width];
 		  
 		  //makes vertexes
@@ -19,13 +24,13 @@ public class Graph {
 		  for (int i = 0; i < height*width; i++) {
 			  //if not last in line, then to the right
 			  if ((i+1)%width!=0) {
-				  int r = ThreadLocalRandom.current().nextInt(randMin, randMax + 1);
+				  int r = ThreadLocalRandom.current().nextInt(RANDMIN, RANDMAX + 1);
 				  VertexArray[i].addNeighbour(new Edge(r, VertexArray[i], VertexArray[i+1]));
 				  VertexArray[i+1].addNeighbour(new Edge(r, VertexArray[i+1], VertexArray[i]));
 			  }
 			  //if not last row, then connect down
 			  if (i<height*width-width) {
-				  int r = ThreadLocalRandom.current().nextInt(randMin, randMax + 1);
+				  int r = ThreadLocalRandom.current().nextInt(RANDMIN, RANDMAX + 1);
 				  VertexArray[i].addNeighbour(new Edge(r, VertexArray[i], VertexArray[i+width]));
 				  VertexArray[i+width].addNeighbour(new Edge(r, VertexArray[i+width], VertexArray[i]));
 			  }
@@ -35,11 +40,7 @@ public class Graph {
 		    this.addVertex(VertexArray[i]);  
 		  }
 
-        //v1.addNeighbour(new Edge(1, v1, v2));
-        //v1.addNeighbour(new Edge(10, v1, v2));
-
-        //v2.addNeighbour(new Edge(1, v2, v3));
-
+		  
 	}
 	boolean addVertex(Vertex vertex){
         return vertices.add(vertex);
