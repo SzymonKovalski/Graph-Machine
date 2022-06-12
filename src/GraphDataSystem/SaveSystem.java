@@ -3,9 +3,8 @@ package GraphDataSystem;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -17,13 +16,9 @@ public class SaveSystem extends JPanel implements ActionListener {
 	JTextField loadFrom = new JTextField();
 	JButton loadButton = new JButton("Load");
 	
-	File file = new File("save1.txt");
-	FileOutputStream fileOutStr =  new FileOutputStream("theBuilding.ser"); 
-			        
-	ObjectOutputStream objOutStr = new ObjectOutputStream(fileOutStr);
+	String file = "./save1";
 	private void Save() {
 		try {
-			 
             FileOutputStream fileOut = new FileOutputStream(file);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(graph);
@@ -36,7 +31,22 @@ public class SaveSystem extends JPanel implements ActionListener {
 	}
 	
 	private void Load() {
-		
+		try {
+			 
+            FileInputStream fileIn = new FileInputStream(file);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+ 
+            Graph g = (Graph) objectIn.readObject();
+ 
+            //dont know why, but DisplayGraph doesnt get the memo about changed width
+            
+            System.out.println("The Object has been read from the file");
+            objectIn.close();
+            Main.updateGraph(g);
+ 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 	}
 	
 	

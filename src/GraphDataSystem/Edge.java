@@ -1,6 +1,8 @@
 package GraphDataSystem;
 
-public class Edge {
+import java.io.Serializable;
+
+public class Edge implements Serializable{
     private double weight;
     private Vertex startVertex;
     private Vertex targetVertex;

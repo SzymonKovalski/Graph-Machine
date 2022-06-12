@@ -1,8 +1,9 @@
 package GraphDataSystem;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vertex implements Comparable<Vertex> {
+public class Vertex implements Comparable<Vertex>, Serializable{
     private int name;
     public List<Edge> edges;
     private boolean visited;

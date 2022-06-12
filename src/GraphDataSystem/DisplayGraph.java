@@ -2,8 +2,6 @@ package GraphDataSystem;
 
 import java.awt.Graphics;
 import java.util.List;
-import java.awt.BasicStroke;
-import java.awt.Stroke;
 import java.awt.Color;
 import javax.swing.JPanel;
 
@@ -11,11 +9,11 @@ public class DisplayGraph extends JPanel{
 	int width, height;
 	final int VERTEXSIZE = 15;
 	
-	Graph graph;
+	Graph graph = Main.graph;
 	List<Vertex> path = null;
 	
-	int rows;
-	int cols;
+	int rows = graph.height;
+	int cols = graph.width;
 	
 	int rowHt;
 	int rowWid;
@@ -25,11 +23,11 @@ public class DisplayGraph extends JPanel{
 	
 	DisplayGraph() {
 		setSize(width = DEFAULTSIZE, height = DEFAULTSIZE);
-	    this.graph = Main.graph;
-	    rows = graph.height;
-	    cols = graph.width;
+	    generate();
 	}
-
+	public void generate() {
+		
+	}
 	public void paint(Graphics g) {
 		width = getSize().width;
 		height = getSize().height;

@@ -8,8 +8,8 @@ import javax.swing.JToolBar;
 
 public class Main extends JFrame{
 
-	public static int height = 10;
-	public static int width = 20;
+	public static int height = 2;
+	public static int width = 3;
 	
 	static JFrame frame = new JFrame();
 	public static Graph graph = new Graph(height, width);
@@ -21,7 +21,7 @@ public class Main extends JFrame{
 	private static void displayAll() {
         Djikstra djikstra = new Djikstra();
 		JToolBar toolbar = new JToolBar();
-		
+		displaygraph.generate();
 		panel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
 	    panel.setLayout(new BorderLayout());
 		
