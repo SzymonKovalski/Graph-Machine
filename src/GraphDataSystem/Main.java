@@ -8,8 +8,8 @@ import javax.swing.JToolBar;
 
 public class Main extends JFrame{
 
-	public static int height = 2;
-	public static int width = 3;
+	public static int height = 20;
+	public static int width = 40;
 	
 	static JFrame frame = new JFrame();
 	public static Graph graph = new Graph(height, width);

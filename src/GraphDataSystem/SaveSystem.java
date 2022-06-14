@@ -55,7 +55,7 @@ public class SaveSystem extends JPanel implements ActionListener {
 	
 	
 	
-	protected SaveSystem(){
+	public SaveSystem(){
 		saveButton.setPreferredSize(new Dimension(100, 20));
 		loadFrom.setPreferredSize(new Dimension(200, 20));
 		loadButton.setPreferredSize(new Dimension(100, 20));
