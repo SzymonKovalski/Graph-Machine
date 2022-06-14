@@ -9,11 +9,11 @@ public class DisplayGraph extends JPanel{
 	int width, height;
 	final int VERTEXSIZE = 15;
 	
-	Graph graph = Main.graph;
+	Graph graph;
 	List<Vertex> path = null;
 	
-	int rows = graph.height;
-	int cols = graph.width;
+	int rows;
+	int cols;
 	
 	int rowHt;
 	int rowWid;
@@ -23,25 +23,29 @@ public class DisplayGraph extends JPanel{
 	
 	DisplayGraph() {
 		setSize(width = DEFAULTSIZE, height = DEFAULTSIZE);
-	    generate();
-	}
-	public void generate() {
-		
 	}
 	public void paint(Graphics g) {
+		setParams();
+		this.g = g;
+		if(path!=null) {
+			drawPath();
+		}else {
+			drawEdges();
+		}
+		drawVerteces();
+		
+	 }
+	private void setParams() {
+		graph = Main.graph;
+		rows = graph.height;
+		cols = graph.width;
+		
 		width = getSize().width;
 		height = getSize().height;
 
 		rowHt = height / (rows);
 		rowWid = width / (cols);
-		this.g = g;
-		drawEdges();
-		drawVerteces();
-		if(path!=null) {
-			drawPath();
-		}
-	 }
-	
+	}
 	private void drawEdges() {
 		for (Vertex element1 :graph.vertices){
 			int index1 = element1.getName();
@@ -73,6 +77,7 @@ public class DisplayGraph extends JPanel{
 	}
 	public void updateUI(List<Vertex> path) {
 		this.path = path;
+		setParams();
 		DisplayGraph.this.repaint();
 	}
 	private void drawPath() {

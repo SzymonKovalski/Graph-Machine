@@ -21,7 +21,7 @@ public class Main extends JFrame{
 	private static void displayAll() {
         Djikstra djikstra = new Djikstra();
 		JToolBar toolbar = new JToolBar();
-		displaygraph.generate();
+		
 		panel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
 	    panel.setLayout(new BorderLayout());
 		

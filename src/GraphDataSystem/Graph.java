@@ -8,7 +8,7 @@ public class Graph implements Serializable{
 	public List<Vertex> vertices;
 	final static int RANDMIN = 1;
 	final static int RANDMAX = 100;
-	static int height, width;
+	public static int height, width;
 	public Graph(int height, int width) {
 		this.vertices = new ArrayList<>();
 		this.height = height;

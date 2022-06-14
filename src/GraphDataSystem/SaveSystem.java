@@ -42,6 +42,8 @@ public class SaveSystem extends JPanel implements ActionListener {
             
             System.out.println("The Object has been read from the file");
             objectIn.close();
+            Graph tempGraph = new Graph(g.height, g.width);
+            Main.updateGraph(tempGraph); //wierd and convoluted solution
             Main.updateGraph(g);
  
         } catch (Exception ex) {
@@ -53,7 +55,7 @@ public class SaveSystem extends JPanel implements ActionListener {
 	
 	
 	
-	public SaveSystem(){
+	protected SaveSystem(){
 		saveButton.setPreferredSize(new Dimension(100, 20));
 		loadFrom.setPreferredSize(new Dimension(200, 20));
 		loadButton.setPreferredSize(new Dimension(100, 20));
